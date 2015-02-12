@@ -25,9 +25,13 @@ public class UserRestService extends RestService{
 		this.mapper = _mapper;
 		this.executor = Executors.newFixedThreadPool(10);
 	}
-	
-	
-	@Override
+
+  @Override
+  public void get(String path, ChannelHandlerContext ctx, MessageEvent e) {
+    post(path, ctx, e);
+  }
+
+  @Override
 	public void post(String path, ChannelHandlerContext ctx, MessageEvent e) {
 
 		HttpRequest request = (HttpRequest) e.getMessage();
